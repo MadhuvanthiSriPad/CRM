@@ -1,0 +1,44 @@
+<div class="container">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light py-4">
+    <h1><a class="navbar-brand" href="#">CRM</a></h1>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <a class="nav-link" routerLink="/">HOME</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="userIsAuthenticated">
+          <a class="nav-link" routerLink="/create">SCHEDULE APPOINTMENTS</a>
+        </li>
+        <li class="nav-item" routerLinkActive="active" *ngIf="userIsAuthenticated ">
+          <a class="nav-link" [routerLink]="['/profile']">ADD LEAD INFORMATION</a>
+        </li>
+
+        <li class="nav-item" routerLinkActive="active" *ngIf="userIsAuthenticated && profileisSet">
+          <a class="nav-link" [routerLink]="['/profile',username]">PROFILE</a>
+        </li>
+
+        
+
+        <li class="nav-item" routerLinkActive="active" *ngIf="userIsAuthenticated && profileisSet">
+          <a class="nav-link" routerLink="/myposts">My APPOINTMENTS</a>
+        </li>
+
+        <li class="nav-item" routerLinkActive="active" *ngIf="!userIsAuthenticated">
+          <a class="nav-link" routerLink="/login">LOGIN</a>
+        </li>
+
+        <li class="nav-item" routerLinkActive="active" *ngIf="userIsAuthenticated">
+          <a class="nav-link" (click)="onLogout()">LOGOUT</a>
+        </li>
+      </ul>
+     </div>
+     <br>
+     <div class="col-lg-8">
+      <img src="assets/asset-1.png" alt="Image" class="img-fluid">
+    </div>
+
